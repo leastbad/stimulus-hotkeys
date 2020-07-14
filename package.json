@@ -1,0 +1,53 @@
+{
+  "name": "stimulus-hotkeys",
+  "version": "1.0.0",
+  "description": "A Stimulus controller for mapping keystrokes to behaviors",
+  "keywords": [
+    "stimulus",
+    "stimulusjs",
+    "hotkeys",
+    "commands",
+    "keystroke"
+  ],
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "author": "@leastbad",
+  "license": "MIT",
+  "external": "stimulus",
+  "scripts": {
+    "postinstall": "node scripts/post_install.js",
+    "prettier-standard:check": "yarn run prettier-standard --check *.js **/*.js",
+    "prettier-standard:format": "yarn run prettier-standard *.js **/*.js",
+    "build": "rollup -c",
+    "dev": "rollup -wc",
+    "release": "np"
+  },
+  "homepage": "https://leastbad.com/",
+  "bugs": {
+    "url": "https://github.com/leastbad/stimulus-hotkeys/issues"
+  },
+  "dependencies": {
+    "hotkeys-js": "^3.8.1",
+    "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-classes": "^7.3.4",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/preset-env": "^7.6.2",
+    "np": "^5.1.3",
+    "prettier-standard": "^16.1.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leastbad/stimulus-hotkeys.git"
+  }
+}
