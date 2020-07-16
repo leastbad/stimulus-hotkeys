@@ -1,6 +1,6 @@
 {
   "name": "stimulus-hotkeys",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Stimulus controller for mapping keystrokes to behaviors",
   "keywords": [
     "stimulus",

@@ -19,6 +19,7 @@ export default class extends Controller {
 
   disconnect () {
     this.actOnHotkeys(hotkeys.unbind)
+    this.connected = false
   }
 
   bindingsValueChanged () {
