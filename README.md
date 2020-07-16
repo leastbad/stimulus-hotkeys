@@ -25,7 +25,7 @@ This [Stimulus](https://stimulusjs.org/) controller allows you to map keystrokes
 Here is a simple example, in which the user hits the "p" key and will see "PONG" on the console.
 
 ```html
-<div data-controller="hotkeys" data-hotkeys-bindings-value='{"p": "foo->example#ping"}'></div>
+<div data-controller="hotkeys" data-hotkeys-bindings-value='{"p": "#foo->example#ping"}'></div>
 <div id="foo" data-controller="example"></div>
 ```
 
