@@ -7,7 +7,7 @@
 
 <p align="center">
   <b>A Stimulus controller for mapping keystrokes to behaviors</b></br>
-  <sub>Teenie at ~40 LOC </sub>
+  <sub>Tiny at ~50 LOC </sub>
 </p>
 
 <br />

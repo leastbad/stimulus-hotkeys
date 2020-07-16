@@ -688,28 +688,44 @@
     _createClass(_default, [{
       key: "initialize",
       value: function initialize() {
-        this.bindings = Object.entries(this.bindingsValue);
         this.map = this.map.bind(this.application);
+        this.actOnHotkeys = this.actOnHotkeys.bind(this);
+        this.connected = false;
       }
     }, {
       key: "connect",
       value: function connect() {
-        setTimeout(() => this.bindings.map(this.map).forEach(mapping => hotkeys.apply(this, mapping)), 1);
+        this.actOnHotkeys(hotkeys);
+        this.connected = true;
       }
     }, {
       key: "disconnect",
       value: function disconnect() {
-        setTimeout(() => this.bindings.map(this.map).forEach(mapping => hotkeys.unbind.apply(this, mapping)), 1);
+        this.actOnHotkeys(hotkeys.unbind);
+      }
+    }, {
+      key: "bindingsValueChanged",
+      value: function bindingsValueChanged() {
+        if (this.connected) this.actOnHotkeys(hotkeys.unbind);
+        this.bindings = Object.entries(this.bindingsValue);
+        if (this.connected) this.actOnHotkeys(hotkeys);
+      }
+    }, {
+      key: "actOnHotkeys",
+      value: function actOnHotkeys(func) {
+        setTimeout(() => this.bindings.map(this.map).filter(mapping => typeof mapping === 'object').forEach(mapping => func.apply(null, mapping)), 1);
       }
     }, {
       key: "map",
       value: function map(binding) {
-        const [key, value] = binding;
-        const [selector, target] = value.split('->');
-        const [identifier, method] = target.split('#');
-        const element = document.querySelector(selector);
-        const controller = this.getControllerForElementAndIdentifier(element, identifier);
-        return [key, controller[method]];
+        try {
+          const [key, value] = binding;
+          const [selector, target] = value.split('->');
+          const [identifier, method] = target.split('#');
+          const element = document.querySelector(selector);
+          const controller = this.getControllerForElementAndIdentifier(element, identifier);
+          if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method]];
+        } catch (err) {}
       }
     }]);
 

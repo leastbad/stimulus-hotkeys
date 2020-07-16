@@ -7,39 +7,49 @@ export default class extends Controller {
   }
 
   initialize () {
-    this.bindings = Object.entries(this.bindingsValue)
     this.map = this.map.bind(this.application)
+    this.actOnHotkeys = this.actOnHotkeys.bind(this)
+    this.connected = false
   }
 
   connect () {
-    setTimeout(
-      () =>
-        this.bindings
-          .map(this.map)
-          .forEach(mapping => hotkeys.apply(this, mapping)),
-      1
-    )
+    this.actOnHotkeys(hotkeys)
+    this.connected = true
   }
 
   disconnect () {
+    this.actOnHotkeys(hotkeys.unbind)
+  }
+
+  bindingsValueChanged () {
+    if (this.connected) this.actOnHotkeys(hotkeys.unbind)
+    this.bindings = Object.entries(this.bindingsValue)
+    if (this.connected) this.actOnHotkeys(hotkeys)
+  }
+
+  actOnHotkeys (func) {
     setTimeout(
       () =>
         this.bindings
           .map(this.map)
-          .forEach(mapping => hotkeys.unbind.apply(this, mapping)),
+          .filter(mapping => typeof mapping === 'object')
+          .forEach(mapping => func.apply(null, mapping)),
       1
     )
   }
 
   map (binding) {
-    const [key, value] = binding
-    const [selector, target] = value.split('->')
-    const [identifier, method] = target.split('#')
-    const element = document.querySelector(selector)
-    const controller = this.getControllerForElementAndIdentifier(
-      element,
-      identifier
-    )
-    return [key, controller[method]]
+    try {
+      const [key, value] = binding
+      const [selector, target] = value.split('->')
+      const [identifier, method] = target.split('#')
+      const element = document.querySelector(selector)
+      const controller = this.getControllerForElementAndIdentifier(
+        element,
+        identifier
+      )
+      if (typeof key === 'string' && typeof controller[method] === 'function')
+        return [key, controller[method]]
+    } catch (err) {}
   }
 }
