@@ -50,7 +50,7 @@ export default class extends Controller {
         identifier
       )
       if (typeof key === 'string' && typeof controller[method] === 'function')
-        return [key, controller[method]]
+        return [key, controller[method].bind(controller)]
     } catch (err) {}
   }
 }
