@@ -700,6 +700,7 @@ let _default = /*#__PURE__*/function (_Controller) {
     key: "disconnect",
     value: function disconnect() {
       this.actOnHotkeys(hotkeys.unbind);
+      this.connected = false;
     }
   }, {
     key: "bindingsValueChanged",
@@ -722,7 +723,7 @@ let _default = /*#__PURE__*/function (_Controller) {
         const [identifier, method] = target.split('#');
         const element = document.querySelector(selector);
         const controller = this.getControllerForElementAndIdentifier(element, identifier);
-        if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method]];
+        if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method].bind(controller)];
       } catch (err) {}
     }
   }]);
