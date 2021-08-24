@@ -45,7 +45,7 @@ This package would be nothing without [Hotkeys](https://wangchujiang.com/hotkeys
 
 ## Setup
 
-Note: **stimulus-hotkeys requires StimulusJS v2.0+**
+Note: **stimulus-hotkeys requires StimulusJS v2.0 or later**
 
 Add stimulus-hotkeys to your main JS entry point or Stimulus controllers root folder:
 
