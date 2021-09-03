@@ -20,7 +20,7 @@
 
 ## Built for StimulusJS
 
-This [Stimulus](https://stimulusjs.org/) controller allows you to map keystrokes to functions in your Stimulus controllers using a simple JSON object. This is an easy way to create shortcut keys for your applications or capture input for games. Once registered in your Stimulus application, you can use it anywhere you like.
+This [Stimulus](https://stimulus.hotwired.dev/) controller allows you to map keystrokes to functions in your Stimulus controllers using a simple JSON object. This is an easy way to create shortcut keys for your applications or capture input for games. Once registered in your Stimulus application, you can use it anywhere you like.
 
 Here is a simple example, in which the user hits the "p" key and will see "PONG" on the console.
 
@@ -46,8 +46,6 @@ This package would be nothing without [Hotkeys](https://wangchujiang.com/hotkeys
 ## Setup
 
 Note: **stimulus-hotkeys requires StimulusJS v2.0+**
-
-*If you are reading this in the past* (Stimulus 2 isn't out yet) you can change your `stimulus` package in `package.json` to point to [this commit](https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz).
 
 Add stimulus-hotkeys to your main JS entry point or Stimulus controllers root folder:
 
