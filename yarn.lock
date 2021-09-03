@@ -866,25 +866,29 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@stimulus/core@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz":
-  version "1.1.1"
-  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz#03ea0bb10e85684dab4151bd5ae1a767cc5c52a9"
+"@stimulus/core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-2.0.0.tgz#140c85318d6a8a8210c0faf182223b8459348877"
+  integrity sha512-ff70GafKtzc8zQ1/cG+UvL06GcifPWovf2wBEdjLMh9xO2GOYURO3y2RYgzIGYUIBefQwyfX2CLfJdZFJrEPTw==
   dependencies:
-    "@stimulus/mutation-observers" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz"
+    "@stimulus/mutation-observers" "^2.0.0"
 
-"@stimulus/multimap@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz":
-  version "1.1.1"
-  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz#3f64d0aa7aa49d10060004f0e26a400810a54590"
+"@stimulus/multimap@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/multimap/-/multimap-2.0.0.tgz#420cfa096ed6538df4a91dbd2b2842c1779952b2"
+  integrity sha512-pMBCewkZCFVB3e5mEMoyO9+9aKzHDITmf3OnPun51YWxlcPdHcwbjqm1ylK63fsoduIE+RowBpFwFqd3poEz4w==
 
-"@stimulus/mutation-observers@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz":
-  version "1.1.1"
-  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz#33a01c587b9fa09cb7378dc9b54a83fdebd70bfa"
+"@stimulus/mutation-observers@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/mutation-observers/-/mutation-observers-2.0.0.tgz#3dbe37453bda47a6c795a90204ee8d77a799fb87"
+  integrity sha512-kx4VAJdPhIGBQKGIoUDC2tupEKorG3A+ckc2b1UiwInKTMAC1axOHU8ebcwhaJIxRqIrs8//4SJo9YAAOx6FEg==
   dependencies:
-    "@stimulus/multimap" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz"
+    "@stimulus/multimap" "^2.0.0"
 
-"@stimulus/webpack-helpers@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz":
-  version "1.1.1"
-  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz#1f1b3d79ed21ec4930f28cb65fa0868bcbe96042"
+"@stimulus/webpack-helpers@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-2.0.0.tgz#54296d2a2dffd4f962d2e802d99a3fdd84b8845f"
+  integrity sha512-D6tJWsAC024MwGEIKlUVYU8Ln87mlrmiwHvYAjipg+s8H4eLxUMQ3PZkWyPevfipH+oR3leuHsjYsK1gN5ViQA==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -4159,12 +4163,13 @@ state-toggle@^1.0.0:
   resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.3.tgz#e123b16a88e143139b09c6852221bc9815917dfe"
   integrity sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==
 
-"stimulus@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz":
-  version "1.1.1"
-  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz#6e0e097d712641214cc066e1b7aa83d308f0488c"
+stimulus@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"
+  integrity sha512-xipy7BS5TVpg4fX6S8LhrYZp7cmHGjmk09WSAiVx1gF5S5g43IWsuetfUhIk8HfHUG+4MQ9nY0FQz4dRFLs/8w==
   dependencies:
-    "@stimulus/core" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz"
-    "@stimulus/webpack-helpers" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz"
+    "@stimulus/core" "^2.0.0"
+    "@stimulus/webpack-helpers" "^2.0.0"
 
 string-argv@^0.3.0:
   version "0.3.1"

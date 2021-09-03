@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "hotkeys-js": "^3.8.1",
-    "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz"
+    "stimulus": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
