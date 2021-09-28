@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "hotkeys-js": "^3.8.1",
-    "stimulus": "^2.0.0"
+    "stimulus": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
