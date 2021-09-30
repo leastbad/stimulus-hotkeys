@@ -1,6 +1,6 @@
 {
   "name": "stimulus-hotkeys",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Stimulus controller for mapping keystrokes to behaviors",
   "keywords": ["stimulus", "stimulusjs", "hotkeys", "commands", "keystroke"],
   "main": "dist/index.js",
@@ -23,8 +23,8 @@
     "url": "https://github.com/leastbad/stimulus-hotkeys/issues"
   },
   "dependencies": {
-    "hotkeys-js": "^3.8.1",
-    "stimulus": "^2.0.0"
+    "hotkeys-js": "^3.8.7",
+    "stimulus": ">= 2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
