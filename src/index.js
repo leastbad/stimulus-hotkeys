@@ -42,7 +42,10 @@ export default class extends Controller {
   map (binding) {
     try {
       const [key, value] = binding
-      const [selector, target] = value.split('->')
+      let [selector, target] = value.split('->')
+      if (!target) {
+        [target, selector] = [selector, this.element]
+      }
       const [identifier, method] = target.split('#')
       const element = document.querySelector(selector)
       const controller = this.getControllerForElementAndIdentifier(
