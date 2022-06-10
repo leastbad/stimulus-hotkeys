@@ -25,15 +25,20 @@ This [Stimulus](https://stimulus.hotwired.dev/) controller allows you to map key
 Here is a simple example, in which the user hits the "p" key and will see "PONG" on the console.
 
 ```html
-<div data-controller="hotkeys" data-hotkeys-bindings-value='{"p": "#foo->example#ping"}'></div>
+<div
+  data-controller="hotkeys"
+  data-hotkeys-bindings-value='{"p": "#foo->example#ping"}'
+></div>
 <div id="foo" data-controller="example"></div>
 ```
 
 ```js
 // example_controller.js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
-  ping () { console.log('PONG') }
+  ping () {
+    console.log('PONG')
+  }
 }
 ```
 
@@ -45,15 +50,13 @@ This package would be nothing without [Hotkeys](https://wangchujiang.com/hotkeys
 
 ## Setup
 
-Note: **stimulus-hotkeys requires StimulusJS v2.0 or later**
-
 Add stimulus-hotkeys to your main JS entry point or Stimulus controllers root folder:
 
 ```js
-import { Application } from 'stimulus'
+import { Application } from '@hotwired/stimulus'
 import Hotkeys from 'stimulus-hotkeys'
 
-import { definitionsFromContext } from 'stimulus/webpack-helpers'
+import { definitionsFromContext } from '@hotwired/stimulus-webpack-helpers'
 const application = Application.start()
 const context = require.context('../controllers', true, /\.js$/)
 application.load(definitionsFromContext(context))
@@ -83,16 +86,22 @@ The value borrows syntax from the Stimulus action system, with important differe
 Here is an example where both the `hotkeys` controller as well as the target `command` controller are both attached to `body`, which is reasonable since `hotkeys` has no visual component.
 
 ```html
-<body data-controller="hotkeys command" data-hotkeys-bindings-value='{"ctrl+z, command+z": "body->command#undo", "ctrl+y, command+y": "body->command#redo"}'>
-</body>
+<body
+  data-controller="hotkeys command"
+  data-hotkeys-bindings-value='{"ctrl+z, command+z": "body->command#undo", "ctrl+y, command+y": "body->command#redo"}'
+></body>
 ```
 
 ```js
 // command_controller.js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
-  undo () { console.log('roll back!') }
-  redo () { console.log('never mind!') }
+  undo () {
+    console.log('roll back!')
+  }
+  redo () {
+    console.log('never mind!')
+  }
 }
 ```
 
