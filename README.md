@@ -20,7 +20,7 @@
 
 ## Built for StimulusJS
 
-This [Stimulus](https://stimulus.hotwired.dev/) controller allows you to map keystrokes to functions in your Stimulus controllers using a simple JSON object. This is an easy way to create shortcut keys for your applications or capture input for games. Once registered in your Stimulus application, you can use it anywhere you like.
+This [Stimulus](https://stimulus.hotwired.dev/) controller allows you to map keystrokes to methods in your Stimulus controllers using a simple JSON object. This is an easy way to create shortcut keys for your applications or capture input for games. Once registered in your Stimulus application, you can use it anywhere you like.
 
 Here is a simple example, in which the user hits the "p" key and will see "PONG" on the console.
 
@@ -43,6 +43,27 @@ export default class extends Controller {
 ```
 
 <tiny>Yes, that's really it.</tiny>
+
+### Passing parameters
+
+As of version 2.1, you can now pass String, Number and Boolean arguments to your Stimulus controller method. Note that it is not possible to pass Objects at this time.
+
+```html
+<body
+  data-controller="hotkeys example"
+  data-hotkeys-bindings-value='{"ctrl+y, command+y": "body->example#redo(hero, 666, true, \"false\", \"/path/to\")"}'
+></body>
+```
+
+```js
+// example_controller.js
+import { Controller } from '@hotwired/stimulus'
+export default class extends Controller {
+  redo () {
+    console.log(arguments) // ['hero', 666, true, false, '/path/to']
+  }
+}
+```
 
 ### Credit where credit is due
 
