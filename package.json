@@ -1,6 +1,6 @@
 {
   "name": "stimulus-hotkeys",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A Stimulus controller for mapping keystrokes to behaviors",
   "keywords": ["stimulus", "stimulusjs", "hotkeys", "commands", "keystroke"],
   "main": "dist/index.js",

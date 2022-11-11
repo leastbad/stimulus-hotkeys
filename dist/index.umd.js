@@ -1180,11 +1180,11 @@
         try {
           const [key, value] = binding;
           const [selector, target] = value.split('->');
-          const [identifier, command] = target.split('#');
-          const method = command.split('(')[0];
+          const [identifier, ...command] = target.split('#');
+          const method = command[0].split('(')[0];
           const element = document.querySelector(selector);
           const controller = this.getControllerForElementAndIdentifier(element, identifier);
-          const matches = command.match(/^.+\((.*)\)$/);
+          const matches = command.join('#').match(/^.+\((.*)\)$/);
           const args = matches ? matches[1].split(',').map(arg => {
             const value = arg.trim().match(/^["']?((?:\\.|[^"'\\])*)["']?$/)[1];
             if (value === 'true') return true;
