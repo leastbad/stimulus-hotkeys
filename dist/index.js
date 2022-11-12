@@ -1133,16 +1133,41 @@ let _default = /*#__PURE__*/function (_Controller) {
 
   var _super = _createSuper(_default);
 
-  function _default() {
+  function _default(..._args) {
+    var _this;
+
     _classCallCheck(this, _default);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, ..._args);
+
+    _defineProperty(_assertThisInitialized(_this), "map", binding => {
+      try {
+        const [key, value] = binding;
+        const [selector, target] = value.includes('->') ? value.split('->') : [null, value];
+        const [identifier, ...command] = target.split('#');
+        const method = command[0].split('(')[0];
+        const element = selector ? document.querySelector(selector) : _this.element;
+
+        const controller = _this.application.getControllerForElementAndIdentifier(element, identifier);
+
+        const matches = command.join('#').match(/^.+\((.*)\)$/);
+        const args = matches ? matches[1].split(',').map(arg => {
+          const value = arg.trim().match(/^["']?((?:\\.|[^"'\\])*)["']?$/)[1];
+          if (value === 'true') return true;
+          if (value === 'false') return false;
+          return isNaN(value) ? value : Number(value);
+        }) : [];
+        if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method].bind(controller, ...args)];
+      } catch (err) {}
+    });
+
+    return _this;
   }
 
   _createClass(_default, [{
     key: "initialize",
     value: function initialize() {
-      this.map = this.map.bind(this.application);
+      // this.map = this.map.bind(this.application)
       this.actOnHotkeys = this.actOnHotkeys.bind(this);
       this.connected = false;
     }
@@ -1169,26 +1194,6 @@ let _default = /*#__PURE__*/function (_Controller) {
     key: "actOnHotkeys",
     value: function actOnHotkeys(func) {
       setTimeout(() => this.bindings.map(this.map).filter(mapping => typeof mapping === 'object').forEach(mapping => func.apply(null, mapping)), 1);
-    }
-  }, {
-    key: "map",
-    value: function map(binding) {
-      try {
-        const [key, value] = binding;
-        const [selector, target] = value.split('->');
-        const [identifier, ...command] = target.split('#');
-        const method = command[0].split('(')[0];
-        const element = document.querySelector(selector);
-        const controller = this.getControllerForElementAndIdentifier(element, identifier);
-        const matches = command.join('#').match(/^.+\((.*)\)$/);
-        const args = matches ? matches[1].split(',').map(arg => {
-          const value = arg.trim().match(/^["']?((?:\\.|[^"'\\])*)["']?$/)[1];
-          if (value === 'true') return true;
-          if (value === 'false') return false;
-          return isNaN(value) ? value : Number(value);
-        }) : [];
-        if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method].bind(controller, ...args)];
-      } catch (err) {}
     }
   }]);
 

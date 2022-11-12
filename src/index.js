@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   initialize () {
-    this.map = this.map.bind(this.application)
+    // this.map = this.map.bind(this.application)
     this.actOnHotkeys = this.actOnHotkeys.bind(this)
     this.connected = false
   }
@@ -39,14 +39,16 @@ export default class extends Controller {
     )
   }
 
-  map (binding) {
+  map = binding => {
     try {
       const [key, value] = binding
-      const [selector, target] = value.split('->')
+      const [selector, target] = value.includes('->')
+        ? value.split('->')
+        : [null, value]
       const [identifier, ...command] = target.split('#')
       const method = command[0].split('(')[0]
-      const element = document.querySelector(selector)
-      const controller = this.getControllerForElementAndIdentifier(
+      const element = selector ? document.querySelector(selector) : this.element
+      const controller = this.application.getControllerForElementAndIdentifier(
         element,
         identifier
       )

@@ -26,10 +26,9 @@ Here is a simple example, in which the user hits the "p" key and will see "PONG"
 
 ```html
 <div
-  data-controller="hotkeys"
-  data-hotkeys-bindings-value='{"p": "#foo->example#ping"}'
+  data-controller="hotkeys example"
+  data-hotkeys-bindings-value='{"p": "example#ping"}'
 ></div>
-<div id="foo" data-controller="example"></div>
 ```
 
 ```js
@@ -51,7 +50,7 @@ As of version 2.1, you can now pass String, Number and Boolean arguments to your
 ```html
 <body
   data-controller="hotkeys example"
-  data-hotkeys-bindings-value='{"ctrl+y, command+y": "body->example#redo(hero, 666, true, \"false\", \"/path/to\")"}'
+  data-hotkeys-bindings-value='{"ctrl+y, command+y": "example#redo(hero, 666, true, \"false\", \"/path/to\")"}'
 ></body>
 ```
 
@@ -63,6 +62,20 @@ export default class extends Controller {
     console.log(arguments) // ['hero', 666, true, false, '/path/to']
   }
 }
+```
+
+### Targeting Stimulus controllers on other elements
+
+As of version 2.2, specifying a CSS selector to target an element containing a Stimulus controller is optional. It now defaults to assuming the `hotkeys` controller is on the same element as the controller receiving the mapping calls.
+
+However, you can still use the `->` syntax to send mapping calls to controllers on other elements:
+
+```html
+<div
+  data-controller="hotkeys"
+  data-hotkeys-bindings-value='{"p": "#foo->example#ping"}'
+></div>
+<div id="foo" data-controller="example"></div>
 ```
 
 ### Credit where credit is due
@@ -96,35 +109,15 @@ You will want to learn about possible key combinations on the [Hotkeys project p
 
 The value borrows syntax from the Stimulus action system, with important differences:
 
-`selector->identifier#method`
+`selector->identifier#method(params)`
 
-**selector** performs a CSS selector lookup and must return an element which holds a Stimulus controller.
+**selector** performs a CSS selector lookup and must return an element which holds a Stimulus controller. (As of v2.2, this segment is optional.)
 
 **identifier** is the Stimulus controller identifier, in kebab-case.
 
 **method** is the function in the target Stimulus controller.
 
-Here is an example where both the `hotkeys` controller as well as the target `command` controller are both attached to `body`, which is reasonable since `hotkeys` has no visual component.
-
-```html
-<body
-  data-controller="hotkeys command"
-  data-hotkeys-bindings-value='{"ctrl+z, command+z": "body->command#undo", "ctrl+y, command+y": "body->command#redo"}'
-></body>
-```
-
-```js
-// command_controller.js
-import { Controller } from '@hotwired/stimulus'
-export default class extends Controller {
-  undo () {
-    console.log('roll back!')
-  }
-  redo () {
-    console.log('never mind!')
-  }
-}
-```
+**params** is optional, and supports string, numeric and boolean parameters.
 
 **Note:** this library is not raising events. If you want to receive events, you'll have to emit them yourself... but at some point, it'll probably be less complicated to just include `hotkeys-js` in your controller directly. This library is cool because the mapping is potentially dynamic.
 
