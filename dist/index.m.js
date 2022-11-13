@@ -1165,7 +1165,6 @@ let _default = /*#__PURE__*/function (_Controller) {
   _createClass(_default, [{
     key: "initialize",
     value: function initialize() {
-      // this.map = this.map.bind(this.application)
       this.actOnHotkeys = this.actOnHotkeys.bind(this);
       this.connected = false;
     }

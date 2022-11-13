@@ -7,7 +7,6 @@ export default class extends Controller {
   }
 
   initialize () {
-    // this.map = this.map.bind(this.application)
     this.actOnHotkeys = this.actOnHotkeys.bind(this)
     this.connected = false
   }
