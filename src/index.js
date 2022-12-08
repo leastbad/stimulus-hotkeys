@@ -37,7 +37,7 @@ export default class extends Controller {
       1
     )
   }
-  
+
   map = binding => {
     try {
       const prevent = binding[1].includes(':prevent')
