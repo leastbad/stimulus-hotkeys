@@ -1146,7 +1146,8 @@
 
       _defineProperty(_assertThisInitialized(_this), "map", binding => {
         try {
-          const [key, value] = binding;
+          const prevent = binding[1].includes(':prevent');
+          const [key, value] = [binding[0], binding[1].replace(':prevent', '')];
           const [selector, target] = value.includes('->') ? value.split('->') : [null, value];
           const [identifier, ...command] = target.split('#');
           const method = command[0].split('(')[0];
@@ -1161,7 +1162,10 @@
             if (value === 'false') return false;
             return isNaN(value) ? value : Number(value);
           }) : [];
-          if (typeof key === 'string' && typeof controller[method] === 'function') return [key, controller[method].bind(controller, ...args)];
+          if (typeof key === 'string' && typeof controller[method] === 'function') return prevent ? [key, event => {
+            event.preventDefault();
+            controller[method].bind(controller, ...args)();
+          }] : [key, controller[method].bind(controller, ...args)];
         } catch (err) {}
       });
 

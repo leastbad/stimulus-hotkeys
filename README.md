@@ -35,7 +35,7 @@ Here is a simple example, in which the user hits the "p" key and will see "PONG"
 // example_controller.js
 import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
-  ping () {
+  ping() {
     console.log('PONG')
   }
 }
@@ -58,11 +58,26 @@ As of version 2.1, you can now pass String, Number and Boolean arguments to your
 // example_controller.js
 import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
-  redo () {
+  redo() {
     console.log(arguments) // ['hero', 666, true, false, '/path/to']
   }
 }
 ```
+
+### Preventing default actions
+
+As of version 2.3, you can now use `:prevent` in your mapping to ensure that your key capture doesn't conflict with native browser behaviour.
+
+```html
+<div
+  data-controller="hotkeys example"
+  data-hotkeys-bindings-value='{"ctrl+k": "example#ping"}'
+></div>
+```
+
+Now, instead of jumping to the browser search bar, you can capture the key event.
+
+Thanks to @norkunas for the suggestion.
 
 ### Targeting Stimulus controllers on other elements
 
