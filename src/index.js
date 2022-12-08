@@ -37,12 +37,11 @@ export default class extends Controller {
       1
     )
   }
-
+  
   map = binding => {
     try {
-      let [key, value] = binding
-      const prevent = value.includes(':prevent')
-      value = value.replace(':prevent', '')
+      const prevent = binding[1].includes(':prevent')
+      const [key, value] = [binding[0], binding[1].replace(':prevent', '')]
       const [selector, target] = value.includes('->')
         ? value.split('->')
         : [null, value]
@@ -66,10 +65,13 @@ export default class extends Controller {
 
       if (typeof key === 'string' && typeof controller[method] === 'function')
         return prevent
-          ? [key, event => {
-            event.preventDefault()
-            controller[method].bind(controller, ...args)()
-          }]
+          ? [
+              key,
+              event => {
+                event.preventDefault()
+                controller[method].bind(controller, ...args)()
+              }
+            ]
           : [key, controller[method].bind(controller, ...args)]
     } catch (err) {}
   }
