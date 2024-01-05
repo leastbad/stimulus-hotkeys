@@ -71,7 +71,7 @@ As of version 2.3, you can now use `:prevent` in your mapping to ensure that you
 ```html
 <div
   data-controller="hotkeys example"
-  data-hotkeys-bindings-value='{"ctrl+k": "example#ping"}'
+  data-hotkeys-bindings-value='{"ctrl+k": "example#ping:prevent"}'
 ></div>
 ```
 
