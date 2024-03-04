@@ -14,7 +14,7 @@
 
 - **Simple**: with only one parameter, this is a drop-in, code-free solution
 - **Backend Agnostic**: 100% client-side
-- **Flexible**: built on the amazing [HotKeys.js](https://wangchujiang.com/hotkeys/) library
+- **Flexible**: built on the amazing [HotKeys.js](https://wangchujiang.com/hotkeys-js/) library
 - **Idempotent**: compatible with Turbolinks by design
 - **MIT Licensed**: free for personal and commercial use
 
@@ -95,7 +95,7 @@ However, you can still use the `->` syntax to send mapping calls to controllers 
 
 ### Credit where credit is due
 
-This package would be nothing without [Hotkeys](https://wangchujiang.com/hotkeys/). Thank you, Kenny Wong!
+This package would be nothing without [Hotkeys](https://wangchujiang.com/hotkeys-js/). Thank you, Kenny Wong!
 
 ## Setup
 
@@ -120,7 +120,7 @@ The `data-hotkeys-bindings-value` attribute accepts an object in valid JSON nota
 
 Each key/value pair corresponds to a mapping. The key is the keystroke(s) you want to capture, and the value contains a path to the function you want to call when your user hits the key.
 
-You will want to learn about possible key combinations on the [Hotkeys project page](https://wangchujiang.com/hotkeys/).
+You will want to learn about possible key combinations on the [Hotkeys project page](https://wangchujiang.com/hotkeys-js/).
 
 The value borrows syntax from the Stimulus action system, with important differences:
 
